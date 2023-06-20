@@ -1,0 +1,189 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Teste LiberFly",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/blog": {
+            "get": {
+                "tags": [
+                    "/api/blog"
+                ],
+                "summary": "Display a list of the resource",
+                "description": "get all blogs on database",
+                "operationId": "544a6146a7525f7c997ecf0fd015c79c",
+                "responses": {
+                    "280": {
+                        "description": "List of blogs"
+                    }
+                },
+                "security": {
+                    "bearerAuth": {}
+                }
+            }
+        },
+        "/api/blog/create": {
+            "post": {
+                "tags": [
+                    "/api/blog/create"
+                ],
+                "summary": "Storing a new resource.",
+                "operationId": "426a39f9fb5c40881da611e3aded4d67",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "The title of the blog.",
+                                        "type": "string",
+                                        "example": "Lista dos 10 melhores carros"
+                                    },
+                                    "content": {
+                                        "description": "The content of the blog.",
+                                        "type": "text",
+                                        "example": "Numero 1..."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successful action!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Response Error"
+                    }
+                }
+            }
+        },
+        "/api/blog/{blog_id}": {
+            "get": {
+                "tags": [
+                    "/api/blog/{blog_id}"
+                ],
+                "summary": "Storing a new resource.",
+                "operationId": "11d96bd9c7b8f83fa3dcaa352a16cfc0",
+                "responses": {
+                    "200": {
+                        "description": "Response Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successful action!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Response Error"
+                    }
+                }
+            }
+        },
+        "/api/blog/update/{blog_id}": {
+            "put": {
+                "tags": [
+                    "/api/blog/update/{blog_id}"
+                ],
+                "summary": "Storing a new resource.",
+                "operationId": "7177a676ee49cefcc445a255efcaacb1",
+                "responses": {
+                    "200": {
+                        "description": "Response Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successful action!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Response Error"
+                    }
+                }
+            }
+        },
+        "/api/blog/delete/{blog_id}": {
+            "delete": {
+                "tags": [
+                    "/api/blog/delete/{blog_id}"
+                ],
+                "summary": "Deleting a specific resource",
+                "operationId": "e5745c6ea0061fb11442a055a3596726",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identification of User",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successful action!"
+                                        },
+                                        "data": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Response Error"
+                    }
+                }
+            }
+        }
+    }
+}
