@@ -16,9 +16,17 @@ class BlogController extends Controller
     }
 
     /**
-     * List all blogs registered
-     *
-     * @return void
+     * @OA\Get(
+     *      tags={"/api/blog"},
+     *      summary="Display a list of the resource",
+     *      description="get all blogs on database",
+     *      path="/blog",
+     *      security={"bearerAuth": {}},
+     *      @OA\Response(
+     *          response="280", description="List of blogs"
+     *      )
+     * )
+     * @return object
      */
     public function index()
     {
@@ -30,10 +38,55 @@ class BlogController extends Controller
     }
 
     /**
-     * Create a new blog
+     * Insert this code on method post() on
+     * \App\Http\Controllers\UsersController.php
+     */
+    /**
+     * Storing a new resource.
      *
-     * @param Request $request
-     * @return void
+     * @OA\Post(
+     *   path="/api/blog/create",
+     *   tags={"/api/blog/create"},
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response Successful",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="Successful action!"
+     *         )
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Response Error"
+     *   ),
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="title",
+     *           type="string",
+     *           description="The title of the blog.",
+     *           example="Lista dos 10 melhores carros"
+     *         ),
+     *         @OA\Property(
+     *           property="content",
+     *           type="text",
+     *           description="The content of the blog.",
+     *           example="Numero 1..."
+     *         ),
+     *       )
+     *     )
+     *   )
+     * )
+     *
+     * @return array
      */
     public function create(Request $request)
     {
@@ -73,10 +126,37 @@ class BlogController extends Controller
     }
 
     /**
-     * Show a especific blog
+     * Insert this code on method post() on
+     * \App\Http\Controllers\UsersController.php
+     */
+    /**
+     * Storing a new resource.
      *
-     * @param [type] $blog_id
-     * @return void
+     * @OA\Get(
+     *   path="/api/blog/{blog_id}",
+     *   tags={"/api/blog/{blog_id}"},
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response Successful",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="Successful action!"
+     *         )
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Response Error"
+     *   ),
+     *   )
+     * )
+     *
+     * @return array
      */
     public function show($blog_id)
     {
@@ -125,13 +205,37 @@ class BlogController extends Controller
     }
 
     /**
-     * Search blog per id
-     * Verify the owner
-     * update blog
+     * Insert this code on method post() on
+     * \App\Http\Controllers\UsersController.php
+     */
+    /**
+     * Storing a new resource.
      *
-     * @param Request $request
-     * @param [type] $blog_id
-     * @return void
+     * @OA\Put(
+     *   path="/api/blog/update/{blog_id}",
+     *   tags={"/api/blog/update/{blog_id}"},
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response Successful",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="Successful action!"
+     *         )
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Response Error"
+     *   ),
+     *   )
+     * )
+     *
+     * @return array
      */
     public function update(Request $request, $blog_id)
     {
@@ -177,12 +281,48 @@ class BlogController extends Controller
     }
 
     /**
-     * Search blog per id
-     * Verify the owner
-     * delete blog
+     * Deleting a specific resource
      *
-     * @param [type] $blog_id
-     * @return void
+     * @OA\Delete(
+     *   path="/api/blog/delete/{blog_id}",
+     *   tags={"/api/blog/delete/{blog_id}"},
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     required=true,
+     *     description="Identification of User",
+     *     example=1,
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response Successful",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="Successful action!"
+     *         ),
+     *         @OA\Property(
+     *           property="data",
+     *           type="boolean",
+     *           example=true
+     *         )
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="Response Error"
+     *   )
+     * )
+     *
+     * @param  int $id
+     * @return array
      */
     public function delete($blog_id)
     {
