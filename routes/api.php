@@ -20,6 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/**
+ *Grupo de Rotas para autenticação
+ *
+ */
 Route::group([
 
     'middleware' => 'api',

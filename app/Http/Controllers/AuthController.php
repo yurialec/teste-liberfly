@@ -15,6 +15,11 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
+    /**
+     * Método de login
+     *
+     * @return void
+     */
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -52,9 +57,14 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Register a new user
+     *
+     * @param Request $request
+     * @return void
+     */
     public function register(Request $request)
     {
-
         $user = new User();
 
         $user->name = $request->name;
