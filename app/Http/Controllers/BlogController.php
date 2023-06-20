@@ -133,6 +133,14 @@ class BlogController extends Controller
         }
     }
 
+    /**
+     * Search blog per id
+     * Verify the owner
+     * delete blog
+     *
+     * @param [type] $blog_id
+     * @return void
+     */
     public function delete($blog_id)
     {
         $findBlog = Blog::where('id', '=', $blog_id)->first();
