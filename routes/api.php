@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 /**
- *Grupo de Rotas para autenticação
+ * Group of routes to authentication
  *
  */
 Route::group([
@@ -40,7 +40,9 @@ Route::group([
     });
 });
 
-
+/**
+ *Group of routes to blog
+ */
 Route::group([
     'prefix' => 'blog'
 ], function () {
