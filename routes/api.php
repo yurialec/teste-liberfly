@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,19 @@ Route::group([
         Route::post('register', 'register');
         Route::post('logout', 'logout');
         Route::post('refresh', 'refresh');
+    });
+});
+
+
+Route::group([
+    'prefix' => 'blog'
+], function () {
+    Route::controller(BlogController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::post('/create', 'create');
+        Route::get('/{blog_id}', 'show');
+        Route::post('/search', 'search');
+        Route::put('/update/{blog_id}', 'update');
+        Route::delete('/delete/{blog_id}', 'delete');
     });
 });
